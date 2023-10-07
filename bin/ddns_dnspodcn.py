@@ -3,6 +3,7 @@ from dnspod_ddns import DnsPodCN_DDNSClient
 
 my_ipv6_addr = get_public_ipv6_address()
 if not my_ipv6_addr or len(my_ipv6_addr) == 0:
+    print('WARNING: No IPv6 public address found. Exit now...')
     exit(0)
 
 domain = 'my_server.com'
