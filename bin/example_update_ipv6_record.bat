@@ -1,0 +1,1 @@
+python -m bin.example_update_ipv6_record
