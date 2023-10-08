@@ -1,16 +1,19 @@
 import urllib3
 
+
 def get_public_ipv6_address() -> str:
     """
     Get your IPv6 public address when requesting a website.
     """
     return get_public_address('IPv6')
 
+
 def get_public_ipv4_address() -> str:
     """
     Get your IPv4 public address when requesting a website.
     """
     return get_public_address('IPv4')
+
 
 def get_public_address(ip_type) -> str:
     """
@@ -25,13 +28,13 @@ def get_public_address(ip_type) -> str:
     if response.status != 200:
         print(f'response.status is not 200: {response.status}')
         return ''
-    
+
     body = response.data.decode('utf-8')
     # Example response:
     # IPv4,167.220.255.99,v1.1,,,See http://ip6.me/docs/ for api documentation
     # IPv6,2404:f801:9000:18:c4cb:aca5:cf91:4821,v1.1,,,See http://ip6.me/docs/ for api documentation
     elements = body.split(',')
-    assert(len(elements) >= 2)
+    assert len(elements) >= 2
     if ip_type == elements[0]:
         return elements[1]
     return ''
